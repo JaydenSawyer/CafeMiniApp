@@ -8,23 +8,26 @@
 import UIKit
 
 class ViewController: UIViewController {
-    @IBOutlet weak var textview: UITextView!
-    
+    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var usrTextView: UITextView!
+    @IBOutlet weak var textField2: UITextField!
+    var cart: [String : Int] = [:]
+    var menu = ""
+    var food = ["Pizza","chicken","Soup","Hotdog","Bagel"]
+     var price = ["$5","$3","$4","$2.50","$1.75"]
     override func viewDidLoad() {
         super.viewDidLoad()
-        var food = ["Soup","Taco","Pizza","burrito","chips"]
-        var price = [5, 3, 8, 6, 2]
-        
-        var displayText = ""
-              
-              for i in 0..<food.count {
-                  let itemDescription = "\(food[i]) is \(price[i]) dollars\n"
-                  displayText += itemDescription
-              }
-              
-              textview.text = displayText
-          }
+       
+        for i in 0..<food.count{
+            menu += "\(food[i])  \(price[i]) \n"
+        }
+        textView.text = menu
     }
-
-
-
+    @IBAction func addoutlet(_ sender: UIButton) {
+        var foods = textField.text!
+        var quantity = textField2.text!
+      
+    }
+    
+}
