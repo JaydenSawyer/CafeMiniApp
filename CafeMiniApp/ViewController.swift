@@ -53,11 +53,13 @@ class ViewController: UIViewController {
            
             displayCart()
             
-            if !food.contains(textField.text!) {
-                    label.text = "Please pick a valid item off the menu."
-            } else if food.contains(textField.text!) {
-                    label.text = "This item is already in your cart."
-                }
+            if food.contains(textField.text!) {
+                    label.text = "Please pick another item off the menu."
+            } else if !food.contains(textField.text!) {
+                    label.text = "Please pick an valid item from menu."
+            } else {
+                label.text = "Item already in cart"
+            }
             }
             }
                 
