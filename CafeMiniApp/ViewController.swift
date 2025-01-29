@@ -15,6 +15,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var usrTextView: UITextView!
     @IBOutlet weak var textField2: UITextField!
     @IBOutlet weak var label: UILabel!
+    var currentLocation : CLLocation!
+    let LocationManager = CLLocationManager()
     var cafes : [MKMapItem] = []
     var cart: [String : Int] = [:]
     var menu = ""
@@ -27,6 +29,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             menu += "\(food[i])  \(price[i]) \n"
         }
         textView.text = menu
+        LocationManager.delegate = self
+        LocationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     func displayCart() {
         var totalPrice = 0.0
