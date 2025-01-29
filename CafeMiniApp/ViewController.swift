@@ -6,13 +6,16 @@
 //
 
 import UIKit
+import MapKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, CLLocationManagerDelegate {
+    @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var usrTextView: UITextView!
     @IBOutlet weak var textField2: UITextField!
     @IBOutlet weak var label: UILabel!
+    var cafes : [MKMapItem] = []
     var cart: [String : Int] = [:]
     var menu = ""
     var food = ["Pizza","Chicken","Soup","Hotdog","Bagel"]
@@ -46,9 +49,9 @@ class ViewController: UIViewController {
     }
 
         @IBAction func addoutlet(_ sender: UIButton) {
-            var foods = textField.text!
-            var quantity = textField2.text!
-            var idk = Int(quantity)!
+            let foods = textField.text!
+            let quantity = textField2.text!
+            let idk = Int(quantity)!
             cart[foods] = idk
            
             displayCart()
@@ -61,7 +64,14 @@ class ViewController: UIViewController {
                 label.text = "Item already in cart"
             }
             }
-            }
+    
+    @IBAction func findButton(_ sender: UIButton) {
+        let request = MKLocalSearch.Request()
+        request.naturalLanguageQuery = "Cafes"
+        
+        
+    }
+}
                 
             
         
